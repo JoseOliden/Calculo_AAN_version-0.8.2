@@ -214,8 +214,48 @@ elif page == "⚙️ Configuración":
     col1, col2, col3 = st.columns(3)
     
     with col1:
-         uno = 1
+        st.subheader("✅ Verificación tiempos ")
+        
+        #Tiempos de irradiación y decaimiento de la muestra
+        # Irraciación: (f_fin, h_fin) - (f_ini, h_ini)
+        # Decaimiento: (f_ini, h_ini) -  (f_med, h_med) 
 
+        #Tiempos de irradiación y decaimiento del comparador Au 
+        # Se el comparador fue irradiado en un tiempo diferente el cálculo
+        # Irraciación: (f_fin_Au, h_fin_Au) - (f_ini_Au, h_ini_Au)
+        # Decaimiento: (f_ini_Au, h_ini_Au) -  (f_med_c_Au, hora_med_c_Au)
+            
+        f_ini = st.session_state["fecha_ini"]
+        h_ini = st.session_state["hora_ini"]
+        f_fin = st.session_state["fecha_fin"]
+        h_fin = st.session_state["hora_fin"]
+        f_med = st.session_state["fecha"]
+        hora_med = st.session_state["hora"]
+        f_ini_c_Au = st.session_state["fecha_ini_Au"]
+        h_ini_c_Au = st.session_state["hora_ini_Au"]
+        f_fin_c_Au = st.session_state["fecha_fin_Au"]
+        h_fin_c_Au = st.session_state["hora_fin_Au"]
+        f_med_c_Au = st.session_state["fecha_au"] 
+        hora_med_c_Au = st.session_state["hora_au"]
+             
+        t_irr, t_dec, t_irr_Au, t_dec_Au = Proc_Irr_Dec(f_ini, h_ini, f_fin, h_fin, f_med, hora_med, f_ini_c_Au, h_ini_c_Au, f_fin_c_Au, h_fin_c_Au, f_med_c_Au, hora_med_c_Au)
+        st.session_state["t_irr"] = t_irr
+        st.session_state["t_dec"] = t_dec
+        st.session_state["t_irr_Au"] = t_irr_Au
+        st.session_state["t_dec_Au"] = t_dec_Au
+        if np.float64(t_irr) > 0 :
+            #st.write(f"**Tiempo irradiación de la muestra (s):** {t_irr}")
+            st.markdown( f"<span style='color:{color}'><b>Tiempo irradiación de la muestra (s):</b> {t_irr}</span>",unsafe_allow_html=True)
+        else: 
+            st.markdown(f"<span style='color:{color}'><b>Tiempo irradiación de la muestra (s): ERROR INGRESO DE DATOS</b></span>", unsafe_allow_html=True)
+        st.write(f"**Tiempo decaimiento de la muestra (s):** {t_dec}")
+        st.write(f"**Tiempo irradiación del comparador Au (s):** {t_irr_Au}")
+        st.write(f"**Tiempo decaimiento del comparador Au (s):** {t_dec_Au}")
+
+
+
+
+    
     with col2:
         st.subheader("📐 Geometría")
         geometria = st.radio("Geometría de detección:", ["50 mm", "185 mm"])
