@@ -101,7 +101,7 @@ if page == "📁 Carga de Datos":
             st.session_state["rpt_au_file"] = rpt_au_file 
             st.success(f"✅ {rpt_au_file.name} cargado")
             if rpt_au_file:
-                df_au_resultado = procesar_RPT(rpt_au_file)
+                df_au_resultado = procesar_RPT(st.session_state["rpt_au_file"])
                 st.dataframe(df_au_resultado)
                 st.session_state["df_au_resultado"] = df_au_resultado
             
