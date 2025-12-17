@@ -97,9 +97,8 @@ if page == "📁 Carga de Datos":
         
         st.subheader("Archivos del comparador")
         rpt_au_file = st.file_uploader("Subir archivo .RPT", type=['RPT', 'RPT'], key="rpt_au")
-        if "df_au_resultado" in st.session_state:
-            df_au_resultado = st.session_state["df_au_resultado"]
         if rpt_au_file:
+            st.session_state["rpt_au_file"] = rpt_au_file 
             st.success(f"✅ {rpt_au_file.name} cargado")
             if rpt_au_file:
                 df_au_resultado = procesar_RPT(rpt_au_file)
