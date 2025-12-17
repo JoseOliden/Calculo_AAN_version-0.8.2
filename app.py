@@ -478,7 +478,7 @@ elif page == "📈 Resultados":
         col_stat1, col_stat2, col_stat3, col_stat4 = st.columns(4)
         
         with col_stat1:
-            st.metric("Número de Elementos", len(df_resultados))
+            st.metric("Número de nucléidos", len(df_resultados))
         with col_stat2:
             min_conc = df_resultados['Concentración (ppm)'].min()
             st.metric("Concentración menor", f"{min_conc:.2f} ppm")
