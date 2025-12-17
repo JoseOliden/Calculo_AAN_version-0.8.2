@@ -74,8 +74,7 @@ if page == "📁 Carga de Datos":
             if rpt_file:
                 df_resultado = procesar_RPT(rpt_file)
                 st.session_state["df_resultado"] = df_resultado
-                if "df_resultado" in st.session_state : 
-                    st.dataframe(df_resultado)
+                st.dataframe(df_resultado)
 
         k0s_file = st.file_uploader("Subir archivo .k0s", type=['k0s', 'K0S'], key="k0s_sample")
         if k0s_file:
@@ -103,8 +102,7 @@ if page == "📁 Carga de Datos":
             if rpt_au_file:
                 df_au_resultado = procesar_RPT(rpt_au_file)
                 st.session_state["df_au_resultado"] = df_au_resultado
-                if "df_au_resultado" in st.session_state : 
-                    st.dataframe(df_au_resultado)
+                st.dataframe(df_au_resultado)
             
         k0s_au_file = st.file_uploader("Subir archivo .k0s", type=['k0s', 'K0S'], key="k0s_au")
         if k0s_au_file:
