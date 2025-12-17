@@ -244,26 +244,22 @@ elif page == "⚙️ Configuración":
         st.session_state["t_irr_Au"] = t_irr_Au
         st.session_state["t_dec_Au"] = t_dec_Au
         if np.float64(t_irr) > 0 :
-            #st.write(f"**Tiempo irradiación de la muestra (s):** {t_irr}")
             st.markdown( f"<span style='color:{"green"}'><b>Tiempo irradiación de la muestra (s):</b> {t_irr}</span>",unsafe_allow_html=True)
         else: 
             st.markdown(f"<span style='color:{"red"}'><b>Tiempo irradiación de la muestra (s): ERROR INGRESO DE DATOS</b></span>", unsafe_allow_html=True)
 
         if np.float64(t_dec) > 0 :
-            #st.write(f"**Tiempo irradiación de la muestra (s):** {t_dec}")
-            st.markdown( f"<span style='color:{"green"}'><b>Tiempo decaimiento de la muestra (s):</b> {t_irr}</span>",unsafe_allow_html=True)
+            st.markdown( f"<span style='color:{"green"}'><b>Tiempo decaimiento de la muestra (s):</b> {t_dec}</span>",unsafe_allow_html=True)
         else: 
             st.markdown(f"<span style='color:{"red"}'><b>Tiempo decaimiento de la muestra (s): ERROR INGRESO DE DATOS</b></span>", unsafe_allow_html=True)
 
         if np.float64(t_irr_Au) > 0 :
-            #st.write(f"**Tiempo irradiación de la muestra (s):** {t_irr_Au}")
-            st.markdown( f"<span style='color:{"green"}'><b>Tiempo irradiación del comparador Au (s):</b> {t_irr}</span>",unsafe_allow_html=True)
+            st.markdown( f"<span style='color:{"green"}'><b>Tiempo irradiación del comparador Au (s):</b> {t_irr_Au}</span>",unsafe_allow_html=True)
         else: 
             st.markdown(f"<span style='color:{"red"}'><b>Tiempo irradiación del comparador Au (s): ERROR INGRESO DE DATOS</b></span>", unsafe_allow_html=True)      
 
         if np.float64(t_dec_Au) > 0 :
-            #st.write(f"**Tiempo irradiación de la muestra (s):** {t_dec_Au}")
-            st.markdown( f"<span style='color:{"green"}'><b>Tiempo decaimiento del comparador Au (s):</b> {t_irr}</span>",unsafe_allow_html=True)
+            st.markdown( f"<span style='color:{"green"}'><b>Tiempo decaimiento del comparador Au (s):</b> {t_dec_Au}</span>",unsafe_allow_html=True)
         else: 
             st.markdown(f"<span style='color:{"red"}'><b>Tiempo decaimiento del comparador Au (s): ERROR INGRESO DE DATOS</b></span>", unsafe_allow_html=True)      
         
