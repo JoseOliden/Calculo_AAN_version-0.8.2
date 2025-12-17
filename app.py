@@ -214,6 +214,9 @@ elif page == "⚙️ Configuración":
     col1, col2, col3 = st.columns(3)
     
     with col1:
+         uno = 1
+
+    with col2:
         st.subheader("📐 Geometría")
         geometria = st.radio("Geometría de detección:", ["50 mm", "185 mm"])
         geometria_val = "50" if geometria == "50 mm" else "185"
@@ -223,7 +226,7 @@ elif page == "⚙️ Configuración":
         tolerancia = st.slider("Tolerancia de energía (keV):", min_value=0.1, max_value=5.0, value=1.5, step=0.1)
         st.session_state["tolerancia"] = np.float64(tolerancia)
 
-    with col2:
+    with col3:
         st.subheader("📊 Incertidumbres")
         u_k0 = 2.8
         u_e = 3.0
@@ -234,9 +237,7 @@ elif page == "⚙️ Configuración":
        
         st.session_state["u_k0"] = np.float64(u_k0)
         st.session_state["u_e"] = np.float64(u_e)
-
-    with col3:
-        uno = 1
+       
         
 
 
