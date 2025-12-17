@@ -480,14 +480,14 @@ elif page == "📈 Resultados":
         with col_stat1:
             st.metric("Número de Elementos", len(df_resultados))
         with col_stat2:
-            avg_conc = df_resultados['Concentración (ppm)'].mean()
-            st.metric("Concentración Promedio", f"{avg_conc:.2f} ppm")
+            min_conc = df_resultados['Concentración (ppm)'].min()
+            st.metric("Concentración menor", f"{min_conc:.2f} ppm")
         with col_stat3:
-            avg_uncert = df_resultados['% Incertidumbre'].mean()
-            st.metric("Incertidumbre Promedio", f"{avg_uncert:.2f}%")
-        with col_stat4:
             max_conc = df_resultados['Concentración (ppm)'].max()
-            st.metric("Concentración Máxima", f"{max_conc:.2f} ppm")
+            st.metric("Concentración mayor", f"{max_conc:.2f} ppm")
+        with col_stat4:
+            max_uncert = df_resultados['% Incertidumbre'].max()
+            st.metric("Incertidumbre mayor", f"{max_uncert:.2f}%")
         
         # Botón para exportar
         st.download_button(
