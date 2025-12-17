@@ -558,7 +558,7 @@ st.markdown("---")
 st.markdown(
     """
     <div style='text-align: center; color: #6B7280;'>
-        <p>Sistema de Análisis k0 - AAN Versión 0.8.1 - beta | Desarrollado para análisis por activación neutrónica</p>
+        <p>Sistema de Análisis k0 - AAN Versión 0.8.2 - beta | Desarrollado para análisis por activación neutrónica</p>
         <p>© 2025 Laboratorio de Técnicas Analíticas - Instituto Peruano de Energía Nuclear</p>
     </div>
     """,
