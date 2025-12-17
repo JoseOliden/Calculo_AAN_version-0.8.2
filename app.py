@@ -97,11 +97,10 @@ if page == "📁 Carga de Datos":
         
         st.subheader("Archivos del comparador")
         rpt_au_file = st.file_uploader("Subir archivo .RPT", type=['RPT', 'RPT'], key="rpt_au")
-        if "rpt_au_file" in st.session_state :
-            st.session_state["rpt_au_file"] = rpt_au_file 
+        if rpt_au_file:
             st.success(f"✅ {rpt_au_file.name} cargado")
             if rpt_au_file:
-                df_au_resultado = procesar_RPT(st.session_state["rpt_au_file"])
+                df_au_resultado = procesar_RPT(rpt_au_file)
                 st.dataframe(df_au_resultado)
                 st.session_state["df_au_resultado"] = df_au_resultado
             
@@ -267,13 +266,6 @@ elif page == "⚙️ Configuración":
         else: 
             st.markdown(f"<span style='color:{"red"}'><b>Tiempo decaimiento del comparador Au (s): ERROR INGRESO DE DATOS</b></span>", unsafe_allow_html=True)      
         
-        #st.write(f"**Tiempo decaimiento de la muestra (s):** {t_dec}")
-        #st.write(f"**Tiempo irradiación del comparador Au (s):** {t_irr_Au}")
-        #st.write(f"**Tiempo decaimiento del comparador Au (s):** {t_dec_Au}")
-
-
-
-
     
     with col2:
         st.subheader("📐 Geometría")
@@ -351,24 +343,6 @@ elif page == "📊 Procesamiento":
                     # Irraciación: (f_fin_Au, h_fin_Au) - (f_ini_Au, h_ini_Au)
                     # Decaimiento: (f_ini_Au, h_ini_Au) -  (f_med_c_Au, hora_med_c_Au)
             
-                    #f_ini = st.session_state["fecha_ini"]
-                    #h_ini = st.session_state["hora_ini"]
-                    #f_fin = st.session_state["fecha_fin"]
-                    #h_fin = st.session_state["hora_fin"]
-                    #f_med = st.session_state["fecha"]
-                    #hora_med = st.session_state["hora"]
-                    #f_ini_c_Au = st.session_state["fecha_ini_Au"]
-                    #h_ini_c_Au = st.session_state["hora_ini_Au"]
-                    #f_fin_c_Au = st.session_state["fecha_fin_Au"]
-                    #h_fin_c_Au = st.session_state["hora_fin_Au"]
-                    #f_med_c_Au = st.session_state["fecha_au"] 
-                    #hora_med_c_Au = st.session_state["hora_au"]
-             
-                    #t_irr, t_dec, t_irr_Au, t_dec_Au = Proc_Irr_Dec(f_ini, h_ini, f_fin, h_fin, f_med, hora_med, f_ini_c_Au, h_ini_c_Au, f_fin_c_Au, h_fin_c_Au, f_med_c_Au, hora_med_c_Au)
-                    #st.write(f"**Tiempo irradiación de la muestra (s):** {t_irr}")
-                    #st.write(f"**Tiempo decaimiento de la muestra (s):** {t_dec}")
-                    #st.write(f"**Tiempo irradiación del comparador Au (s):** {t_irr_Au}")
-                    #st.write(f"**Tiempo decaimiento del comparador Au (s):** {t_dec_Au}")
                     t_irr = st.session_state["t_irr"] 
                     t_dec = st.session_state["t_dec"] 
                     t_irr_Au = st.session_state["t_irr_Au"] 
