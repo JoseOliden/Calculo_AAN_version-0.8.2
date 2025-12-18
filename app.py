@@ -380,6 +380,7 @@ elif page == "📊 Procesamiento":
                     st.dataframe(df_muestra)
                     C, Cn_corr_i = conc(df_muestra, w,td_i,ti_i,tv_i,tr_i, df_comp_Au, w_Au,td_c_Au,ti_c_Au,tv_c_Au,tr_c_Au, alfa, f, geom)
                     df_muestra["Net Peak Area Corr"] = Cn_corr_i
+                    st.dataframe(df_muestra["Net Peak Area Corr"])
                     df_muestra["Concentracion (PPM)"] = C*1000000
                     time.sleep(1.0)
             
