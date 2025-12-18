@@ -142,7 +142,7 @@ def conc(df_muestra, w,td_i,ti_i,tv_i,tr_i, df_comp_Au, w_Au,td_c_Au,ti_c_Au,tv_
     # correción por blanco 
     C_aux = np.float64(C[i]*1000000)
     ##
-    C[i] = (w_i*C_aux - np.float64(df_muestra.loc[i,"BLANCO  MAYO 2024(ug)"]))/w_i
+    C[i] = (w_i*C_aux - np.float64(df_muestra.loc[i,"BLANCO  MAYO 2024(ug)"]))/(1000000*w_i)
   return C, Cn_corr_i
 
 # ------------------------ Calculo de Incertidumbre ---------------------------#
