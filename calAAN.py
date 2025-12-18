@@ -140,7 +140,7 @@ def conc(df_muestra, w,td_i,ti_i,tv_i,tr_i, df_comp_Au, w_Au,td_c_Au,ti_c_Au,tv_
     # Calcula la concentración del elemento i en la muestra
     C[i] = (Aesp_i[i]/Aesp_c_Au)*(k0_c_Au/k0_i[i])*(e_c_Au/e_i[i])*((f + Q0_alfa_c_Au)/(f + Q0_alfa_i[i]))
     # correción por blanco  
-    m_ana = w_i*C[i] - np.float64(df_muestra["BLANCO  MAYO 2024(ug)"])
+    m_ana = np.float64(w_i)*C[i] - np.float64(df_muestra["BLANCO  MAYO 2024(ug)"])
     C[i] = m_ana/w_i
   return C, Cn_corr_i
 
