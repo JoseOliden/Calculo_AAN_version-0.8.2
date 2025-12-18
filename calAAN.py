@@ -141,7 +141,8 @@ def conc(df_muestra, w,td_i,ti_i,tv_i,tr_i, df_comp_Au, w_Au,td_c_Au,ti_c_Au,tv_
     C[i] = (Aesp_i[i]/Aesp_c_Au)*(k0_c_Au/k0_i[i])*(e_c_Au/e_i[i])*((f + Q0_alfa_c_Au)/(f + Q0_alfa_i[i]))
     # correción por blanco 
     C_aux = np.float64(C[i]*1000000)
-    m_ana = (w_i*C_aux - np.float64(df_muestra.loc[i,"BLANCO  MAYO 2024(ug)"]))/w_i
+    ##
+    C[i] = (w_i*C_aux - np.float64(df_muestra.loc[i,"BLANCO  MAYO 2024(ug)"]))/w_i
   return C, Cn_corr_i
 
 # ------------------------ Calculo de Incertidumbre ---------------------------#
