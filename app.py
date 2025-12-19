@@ -104,10 +104,10 @@ if page == "📁 Carga de Datos":
             "t_real" in st.session_state
             ):
             st.subheader("📌 Datos extraídos del archivo")
-            st.write(f"**Fecha de medición:** {fecha}")
-            st.write(f"**Hora de medición:** {hora}")
-            st.write(f"**Tiempo vivo (s):** {t_vivo}")
-            st.write(f"**Tiempo real (s):** {t_real}")
+            st.write(f"**Fecha de medición:** {st.session_state["fecha"]}")
+            st.write(f"**Hora de medición:** {st.session_state["hora"]}")
+            st.write(f"**Tiempo vivo (s):** {st.session_state["t_vivo"]}")
+            st.write(f"**Tiempo real (s):** {st.session_state["t_real"]}")
         else:
             st.warning("⚠️ No se ha cargado archivo k0s ")
         
