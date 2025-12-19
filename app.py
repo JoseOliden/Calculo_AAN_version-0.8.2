@@ -105,7 +105,6 @@ if page == "📁 Carga de Datos":
             st.warning("⚠️ No se ha cargado archivo k0s ")
     
     with col2:
-       
         
         st.subheader("Archivos del comparador")
         rpt_au_file = st.file_uploader("Subir archivo .RPT", type=['RPT', 'RPT'], key="rpt_au")
@@ -119,22 +118,45 @@ if page == "📁 Carga de Datos":
             st.dataframe(st.session_state["df_au_resultado"])
         else:
             st.warning("⚠️ No se ha cargado archivo RPT ")
-        
             
         k0s_au_file = st.file_uploader("Subir archivo .k0s", type=['k0s', 'K0S'], key="k0s_au")
         if k0s_au_file:
-            st.success(f"✅ {k0s_au_file.name} cargado")
+            st.session_state["k0s_au_file"] = k0s_au_file
             fecha_au, hora_au, t_vivo_au, t_real_au = extraer_DATE_MEA_MEAS_TIM(k0s_au_file)
             st.session_state["fecha_au"] = fecha_au
             st.session_state["hora_au"] = hora_au
             st.session_state["t_vivo_au"] = np.float64(t_vivo_au)
             st.session_state["t_real_au"] = np.float64(t_real_au)
+
+        if (
+            "fecha_au" in st.session_state and
+            "hora_au" in st.session_state and
+            "t_vivo_au" in st.session_state and
+            "t_real_au" in st.session_state
+            ):
+            st.success(f"📄 Archivo cargado: {st.session_state['k0s_au_file'].name}")
+            st.write("📌 Datos extraídos del archivo")
+            st.write(f"**Fecha de medición:** {st.session_state["fecha_au"]}")
+            st.write(f"**Hora de medición:** {st.session_state["hora_au"]}")
+            st.write(f"**Tiempo vivo (s):** {st.session_state["t_vivo_au"]}")
+            st.write(f"**Tiempo real (s):** {st.session_state["t_real_au"]}")
+        else:
+            st.warning("⚠️ No se ha cargado archivo k0s ")
+        
+        
+        #if k0s_au_file:
+        #    st.success(f"✅ {k0s_au_file.name} cargado")
+        #    fecha_au, hora_au, t_vivo_au, t_real_au = extraer_DATE_MEA_MEAS_TIM(k0s_au_file)
+        #    st.session_state["fecha_au"] = fecha_au
+        #    st.session_state["hora_au"] = hora_au
+        #    st.session_state["t_vivo_au"] = np.float64(t_vivo_au)
+        #    st.session_state["t_real_au"] = np.float64(t_real_au)
             
-            st.subheader("📌 Datos extraídos del archivo")
-            st.write(f"**Fecha de medición:** {fecha_au}")
-            st.write(f"**Hora de medición:** {hora_au}")
-            st.write(f"**Tiempo vivo (s):** {t_vivo_au}")
-            st.write(f"**Tiempo real (s):** {t_real_au}")
+        #    st.subheader("📌 Datos extraídos del archivo")
+        #    st.write(f"**Fecha de medición:** {fecha_au}")
+        #    st.write(f"**Hora de medición:** {hora_au}")
+        #    st.write(f"**Tiempo vivo (s):** {t_vivo_au}")
+        #    st.write(f"**Tiempo real (s):** {t_real_au}")
           
     col21, col22 = st.columns(2)
 
