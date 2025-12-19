@@ -149,7 +149,7 @@ if page == "📁 Carga de Datos":
         # Base de datos de Nucléidos
         st.subheader("🗃️ Base de datos de nucléidos")
         db_file = st.file_uploader("Subir Base de Datos (.xlsx)", type=['xlsx'], key="database")
-        if db_file_o:
+        if db_file:
             df_file = pd.read_excel(db_file)
             st.session_state["df_file"] = df_file
         if "df_file" in st.session_state:
