@@ -79,13 +79,6 @@ if page == "📁 Carga de Datos":
             st.dataframe(st.session_state["df_resultado"])
         else:
             st.warning("⚠️ No se ha cargado archivo RPT ")
-        
-        #if rpt_file:
-        #    st.success(f"✅ {rpt_file.name} cargado")
-        #    if rpt_file:
-        #        df_resultado = procesar_RPT(rpt_file)
-        #        st.session_state["df_resultado"] = df_resultado
-        #        st.dataframe(df_resultado)
 
         k0s_file = st.file_uploader("Subir archivo .k0s", type=['k0s', 'K0S'], key="k0s_sample")
         if k0s_file:
@@ -110,22 +103,6 @@ if page == "📁 Carga de Datos":
             st.write(f"**Tiempo real (s):** {st.session_state["t_real"]}")
         else:
             st.warning("⚠️ No se ha cargado archivo k0s ")
-        
-        
-        #if k0s_file:
-        #    st.success(f"✅ {k0s_file.name} cargado")
-        #    if k0s_file:
-        #        fecha, hora, t_vivo, t_real = extraer_DATE_MEA_MEAS_TIM(k0s_file)
-        #        st.session_state["fecha"] = fecha
-        #        st.session_state["hora"] = hora
-        #        st.session_state["t_vivo"] = np.float64(t_vivo)
-        #        st.session_state["t_real"] = np.float64(t_real)
-        #        
-        #        st.subheader("📌 Datos extraídos del archivo")
-        #        st.write(f"**Fecha de medición:** {fecha}")
-        #        st.write(f"**Hora de medición:** {hora}")
-        #        st.write(f"**Tiempo vivo (s):** {t_vivo}")
-        #        st.write(f"**Tiempo real (s):** {t_real}")
     
     with col2:
        
@@ -133,11 +110,16 @@ if page == "📁 Carga de Datos":
         st.subheader("Archivos del comparador")
         rpt_au_file = st.file_uploader("Subir archivo .RPT", type=['RPT', 'RPT'], key="rpt_au")
         if rpt_au_file:
-            st.success(f"✅ {rpt_au_file.name} cargado")
-            if rpt_au_file:
-                df_au_resultado = procesar_RPT(rpt_au_file)
-                st.session_state["df_au_resultado"] = df_au_resultado
-                st.dataframe(df_au_resultado)
+            st.session_state["rpt_au_file"] = rpt_au_file
+            df_au_resultado = procesar_RPT(st.session_state["rpt_au_file"])
+            st.session_state["df_au_resultado"] = df_au_resultado
+
+        if "df_au_resultado" in st.session_state:
+            st.success(f"📄 Archivo cargado: {st.session_state["rpt_au_file"].name}")
+            st.dataframe(st.session_state["df_au_resultado"])
+        else:
+            st.warning("⚠️ No se ha cargado archivo RPT ")
+        
             
         k0s_au_file = st.file_uploader("Subir archivo .k0s", type=['k0s', 'K0S'], key="k0s_au")
         if k0s_au_file:
