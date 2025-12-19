@@ -338,8 +338,9 @@ elif page == "⚙️ Configuración":
     with col2:
         st.subheader("📐 Geometría")
         geometria = st.radio("Geometría de detección:", ["50 mm", "185 mm"])
-        geometria_val = "50" if geometria == "50 mm" else "185"
+        #geometria_val = "50" if geometria == "50 mm" else "185"
         st.session_state["geometria"] = geometria
+        
 
         st.subheader("⏰ Tolerancia de Energía")
         tolerancia = st.slider("Tolerancia de energía (keV):", min_value=0.1, max_value=5.0, value=1.5, step=0.1)
