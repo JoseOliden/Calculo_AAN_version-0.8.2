@@ -154,7 +154,7 @@ if page == "📁 Carga de Datos":
             st.session_state["df_file"] = df_file
         if "df_file" in st.session_state:
             st.success(f"✅ Base de datos cargada")
-            st.success(f"📄 Archivo cargado: {st.session_state["df_file"].name}")
+            #st.success(f"📄 Archivo cargado: {st.session_state["df_file"].name}")
             st.dataframe(st.session_state["df_file"])
         else:
             st.warning("⚠️ No se ha cargado archivo")
