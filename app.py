@@ -198,7 +198,7 @@ elif page == "⚙️ Configuración":
                 masa_comparador_au = st.number_input("Masa del comparador (μg):", min_value=0.0, value=st.session_state["masa_comparador_au"], step=0.01, format="%.2f")
             else:
                 masa_comparador_au = st.number_input("Masa del comparador (μg):", min_value=0.0, value=16.82, step=0.01, format="%.2f")
-            st.session_state["masa_comparador_au"] = np.float64(masa_comparador_au)/1000000
+            st.session_state["masa_comparador_au"] = masa_comparador_au
 
         with ince:
             u_w = st.number_input("Incertidumbre masa de la muestra (%):", min_value=0.0, max_value=5.0, value=0.01, step=0.001)
@@ -407,7 +407,7 @@ elif page == "📊 Procesamiento":
                     tv_i = st.session_state["t_vivo"]
                     tr_i = st.session_state["t_real"]
                     df_comp_Au = df_Au.copy()
-                    w_Au = st.session_state["masa_comparador_au"]
+                    w_Au = np.float64(st.session_state["masa_comparador_au"])/1000000
     
                     td_c_Au = t_dec_Au 
                     ti_c_Au = t_irr
