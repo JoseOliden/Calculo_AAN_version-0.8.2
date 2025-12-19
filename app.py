@@ -97,7 +97,12 @@ if page == "📁 Carga de Datos":
             st.session_state["t_vivo"] = np.float64(t_vivo)
             st.session_state["t_real"] = np.float64(t_real)
 
-        if "fecha" & "hora" & "t_vivo" & "t_real" in st.session_state:
+        if (
+            "fecha" in st.session_state and
+            "hora" in st.session_state and
+            "t_vivo" in st.session_state and
+            "t_real" in st.session_state
+            ):
             st.subheader("📌 Datos extraídos del archivo")
             st.write(f"**Fecha de medición:** {fecha}")
             st.write(f"**Hora de medición:** {hora}")
