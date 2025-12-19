@@ -163,13 +163,17 @@ if page == "📁 Carga de Datos":
     with col22:
         # Librería de Nucléidos
         st.subheader("📚 Librería de Nucléidos")
-        ref_type = st.radio("Seleccionar tipo de nucléidos:", ["Corta (C)", "Media (M)", "Larga (L)"])
+        if "ref_type" not in st.session_state:
+            st.session_state["ref_type"] = "Corta (C)"
+        ref_type = st.radio("Seleccionar tipo de nucléidos:", ["Corta (C)", "Media (M)", "Larga (L)"],index = ["Corta (C)", "Media (M)", "Larga (L)"].index(st.session_state["ref_type"]))
+        st.session_state["ref_type"] = ref_type
         ref_files = st.file_uploader(f"Subir archivo RDN_{ref_type[0]}.xlsx", type=['xlsx'], key="reference")
         if ref_files:
             st.success(f"✅ Archivo cargado")
             ref_files = pd.read_excel(ref_files)
             st.dataframe(ref_files)
             st.session_state["ref_files"] = ref_files
+        if 
 
 # ============================================
 # SECCIÓN 2: CONFIGURACIÓN
