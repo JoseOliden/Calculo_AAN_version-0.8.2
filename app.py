@@ -90,15 +90,14 @@ if page == "📁 Carga de Datos":
         k0s_file = st.file_uploader("Subir archivo .k0s", type=['k0s', 'K0S'], key="k0s_sample")
         if k0s_file:
             st.session_state["k0s_file"] = k0s_file
-
-        if "k0s_file" in st.session_state:
             st.success(f"📄 Archivo cargado: {st.session_state['k0s_file'].name}")
             fecha, hora, t_vivo, t_real = extraer_DATE_MEA_MEAS_TIM(k0s_file)
             st.session_state["fecha"] = fecha
             st.session_state["hora"] = hora
             st.session_state["t_vivo"] = np.float64(t_vivo)
             st.session_state["t_real"] = np.float64(t_real)
-                
+
+        if "fecha" & "hora" & "t_vivo" & "t_real" in st.session_state:
             st.subheader("📌 Datos extraídos del archivo")
             st.write(f"**Fecha de medición:** {fecha}")
             st.write(f"**Hora de medición:** {hora}")
