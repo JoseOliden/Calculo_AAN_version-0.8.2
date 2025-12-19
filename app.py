@@ -142,21 +142,6 @@ if page == "📁 Carga de Datos":
             st.write(f"**Tiempo real (s):** {st.session_state["t_real_au"]}")
         else:
             st.warning("⚠️ No se ha cargado archivo k0s ")
-        
-        
-        #if k0s_au_file:
-        #    st.success(f"✅ {k0s_au_file.name} cargado")
-        #    fecha_au, hora_au, t_vivo_au, t_real_au = extraer_DATE_MEA_MEAS_TIM(k0s_au_file)
-        #    st.session_state["fecha_au"] = fecha_au
-        #    st.session_state["hora_au"] = hora_au
-        #    st.session_state["t_vivo_au"] = np.float64(t_vivo_au)
-        #    st.session_state["t_real_au"] = np.float64(t_real_au)
-            
-        #    st.subheader("📌 Datos extraídos del archivo")
-        #    st.write(f"**Fecha de medición:** {fecha_au}")
-        #    st.write(f"**Hora de medición:** {hora_au}")
-        #    st.write(f"**Tiempo vivo (s):** {t_vivo_au}")
-        #    st.write(f"**Tiempo real (s):** {t_real_au}")
           
     col21, col22 = st.columns(2)
 
@@ -164,12 +149,17 @@ if page == "📁 Carga de Datos":
         # Base de datos de Nucléidos
         st.subheader("🗃️ Base de datos de nucléidos")
         db_file = st.file_uploader("Subir Base de Datos (.xlsx)", type=['xlsx'], key="database")
-        if db_file:
-            st.success(f"✅ Base de datos cargada")
+        if db_file_o:
             df_file = pd.read_excel(db_file)
-            st.dataframe(df_file)
             st.session_state["df_file"] = df_file
+        if "df_file" in st.session_state:
+            st.success(f"✅ Base de datos cargada")
+            st.success(f"📄 Archivo cargado: {st.session_state["df_file"].name}")
+            st.dataframe(st.session_state["df_file"])
+        else:
+            st.warning("⚠️ No se ha cargado archivo")
 
+    
     with col22:
         # Librería de Nucléidos
         st.subheader("📚 Librería de Nucléidos")
