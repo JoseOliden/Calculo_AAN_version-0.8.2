@@ -232,12 +232,18 @@ elif page == "⚙️ Configuración":
         col_fecha2, col_hora2 = st.columns(2)
         with col_fecha2:
             #fecha_fin = st.date_input("Fecha fin irradiación (yyyy/mm/dd):", value=datetime(2025, 9, 26))
-            fecha_fin= st.text_input("Fecha fin (muestra) (MM/DD/AAAA):", value="09/26/2025")
-
+            if "fecha_fin" in st.session_state:
+                fecha_fin= st.text_input("Fecha fin (muestra) (MM/DD/AAAA):", value=st.session_state["fecha_fin"])
+            else:
+                fecha_fin= st.text_input("Fecha fin (muestra) (MM/DD/AAAA):", value="09/26/2025")     
             st.session_state["fecha_fin"] = fecha_fin
+            
         with col_hora2:
             #hora_fin = st.time_input("Hora fin irradiación:", value=datetime.strptime("09:45:00", "%H:%M:%S").time(),step=timedelta(seconds=1))
-            hora_fin= st.text_input("Hora fin (muestra) (HH:MM:SS):", value="09:45:00")
+            if "hora_fin" in st.session_state:
+                hora_fin= st.text_input("Hora fin (muestra) (HH:MM:SS):", value=st.session_state["hora_fin"])
+            else:    
+                hora_fin= st.text_input("Hora fin (muestra) (HH:MM:SS):", value="09:45:00")
             st.session_state["hora_fin"] = hora_fin
 
     with col3:
