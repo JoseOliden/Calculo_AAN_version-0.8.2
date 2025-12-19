@@ -89,10 +89,10 @@ if page == "📁 Carga de Datos":
 
         k0s_file = st.file_uploader("Subir archivo .k0s", type=['k0s', 'K0S'], key="k0s_sample")
         if k0s_file:
-            st.session_state["rpt_k0s"] = rpt_k0s
+            st.session_state["k0s_file"] = k0s_file
 
-        if "rpt_k0s" in st.session_state:
-            st.success(f"📄 Archivo cargado: {st.session_state['rpt_k0s'].name}")
+        if "k0s_file" in st.session_state:
+            st.success(f"📄 Archivo cargado: {st.session_state['k0s_file'].name}")
             fecha, hora, t_vivo, t_real = extraer_DATE_MEA_MEAS_TIM(k0s_file)
             st.session_state["fecha"] = fecha
             st.session_state["hora"] = hora
