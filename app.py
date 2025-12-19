@@ -173,7 +173,6 @@ if page == "📁 Carga de Datos":
             ref_files = pd.read_excel(ref_files)
             st.dataframe(ref_files)
             st.session_state["ref_files"] = ref_files
-        if 
 
 # ============================================
 # SECCIÓN 2: CONFIGURACIÓN
