@@ -76,6 +76,7 @@ if page == "📁 Carga de Datos":
             st.session_state["df_resultado"] = df_resultado
 
         if "df_resultado" in st.session_state:
+            st.success(f"📄 Archivo cargado: {st.session_state["rpt_file"].name}")
             st.dataframe(st.session_state["df_resultado"])
         else:
             st.warning("⚠️ No se ha cargado archivo RPT ")
