@@ -338,7 +338,7 @@ elif page == "⚙️ Configuración":
     with col2:
         st.subheader("📐 Geometría")
         geometria = st.radio("Geometría de detección:", ["50 mm", "185 mm"])
-        #geometria_val = "50" if geometria == "50 mm" else "185"
+        geometria_val = "50" if geometria == "50 mm" else "185"
         st.session_state["geometria"] = geometria
         
 
