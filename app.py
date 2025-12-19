@@ -223,8 +223,10 @@ elif page == "⚙️ Configuración":
                 fecha_ini= st.text_input("Fecha inicio (muestra) (MM/DD/AAAA):", value="09/26/2025")
             st.session_state["fecha_ini"] = fecha_ini
         with col_hora1:
-            hora_ini = st.time_input("Hora inicio irradiación:", value=datetime.strptime("08:45:00", "%H:%M:%S").time(),step=timedelta(seconds=1))
-            #hora_ini = st.text_input("Hora inicio (muestra) (HH:MM:SS):", value="08:45:00")
+            if "hora_ini" in st.session_state:
+                hora_ini = st.text_input("Hora inicio (muestra) (HH:MM:SS):", value=st.session_state["hora_ini"])
+            else:
+                hora_ini = st.text_input("Hora inicio (muestra) (HH:MM:SS):", value="08:45:00")
             st.session_state["hora_ini"] = hora_ini
         
         col_fecha2, col_hora2 = st.columns(2)
