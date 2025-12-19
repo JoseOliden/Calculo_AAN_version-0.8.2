@@ -71,11 +71,11 @@ if page == "📁 Carga de Datos":
         rpt_file = st.file_uploader("Subir archivo .RPT", type=['rpt', 'RPT'], key="rpt_sample")
         if rpt_file:
             st.session_state["rpt_file"] = rpt_file
-
-        if "rpt_file" in st.session_state:
             st.success(f"📄 Archivo cargado: {st.session_state["rpt_file"].name}")
             df_resultado = procesar_RPT(st.session_state["rpt_file"])
             st.session_state["df_resultado"] = df_resultado
+
+        if "df_resultado" in st.session_state:
             st.dataframe(st.session_state["df_resultado"])
         else:
             st.warning("⚠️ No se ha cargado archivo RPT ")
