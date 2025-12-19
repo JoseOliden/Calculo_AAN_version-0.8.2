@@ -71,7 +71,6 @@ if page == "📁 Carga de Datos":
         rpt_file = st.file_uploader("Subir archivo .RPT", type=['rpt', 'RPT'], key="rpt_sample")
         if rpt_file:
             st.session_state["rpt_file"] = rpt_file
-            st.success(f"📄 Archivo cargado: {st.session_state["rpt_file"].name}")
             df_resultado = procesar_RPT(st.session_state["rpt_file"])
             st.session_state["df_resultado"] = df_resultado
 
@@ -91,7 +90,6 @@ if page == "📁 Carga de Datos":
         k0s_file = st.file_uploader("Subir archivo .k0s", type=['k0s', 'K0S'], key="k0s_sample")
         if k0s_file:
             st.session_state["k0s_file"] = k0s_file
-            st.success(f"📄 Archivo cargado: {st.session_state['k0s_file'].name}")
             fecha, hora, t_vivo, t_real = extraer_DATE_MEA_MEAS_TIM(k0s_file)
             st.session_state["fecha"] = fecha
             st.session_state["hora"] = hora
@@ -104,7 +102,8 @@ if page == "📁 Carga de Datos":
             "t_vivo" in st.session_state and
             "t_real" in st.session_state
             ):
-            st.subheader("📌 Datos extraídos del archivo")
+            st.success(f"📄 Archivo cargado: {st.session_state['k0s_file'].name}")
+            st.write("📌 Datos extraídos del archivo")
             st.write(f"**Fecha de medición:** {st.session_state["fecha"]}")
             st.write(f"**Hora de medición:** {st.session_state["hora"]}")
             st.write(f"**Tiempo vivo (s):** {st.session_state["t_vivo"]}")
