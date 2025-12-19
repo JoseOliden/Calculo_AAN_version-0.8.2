@@ -70,11 +70,22 @@ if page == "📁 Carga de Datos":
         st.subheader("Archivos de la muestra")
         rpt_file = st.file_uploader("Subir archivo .RPT", type=['rpt', 'RPT'], key="rpt_sample")
         if rpt_file:
-            st.success(f"✅ {rpt_file.name} cargado")
-            if rpt_file:
-                df_resultado = procesar_RPT(rpt_file)
-                st.session_state["df_resultado"] = df_resultado
-                st.dataframe(df_resultado)
+            st.session_state["rpt_file"] = rpt_file
+
+        if "rpt_file" in st.session_state:
+            st.success(f"📄 Archivo cargado: {st.session_state['rpt_file'].name}")
+            df_resultado = procesar_RPT(rpt_file)
+            st.session_state["df_resultado"] = df_resultado
+            st.dataframe(df_resultado)
+        else:
+            st.warning("⚠️ No se ha cargado archivo RPT ")
+        
+        #if rpt_file:
+        #    st.success(f"✅ {rpt_file.name} cargado")
+        #    if rpt_file:
+        #        df_resultado = procesar_RPT(rpt_file)
+        #        st.session_state["df_resultado"] = df_resultado
+        #        st.dataframe(df_resultado)
 
         k0s_file = st.file_uploader("Subir archivo .k0s", type=['k0s', 'K0S'], key="k0s_sample")
         if k0s_file:
