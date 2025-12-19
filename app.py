@@ -154,7 +154,6 @@ if page == "📁 Carga de Datos":
             st.session_state["df_file"] = df_file
         if "df_file" in st.session_state:
             st.success(f"✅ Base de datos cargada")
-            #st.success(f"📄 Archivo cargado: {st.session_state["df_file"].name}")
             st.dataframe(st.session_state["df_file"])
         else:
             st.warning("⚠️ No se ha cargado archivo")
@@ -169,10 +168,13 @@ if page == "📁 Carga de Datos":
         st.session_state["ref_type"] = ref_type
         ref_files = st.file_uploader(f"Subir archivo RDN_{ref_type[0]}.xlsx", type=['xlsx'], key="reference")
         if ref_files:
-            st.success(f"✅ Archivo cargado")
             ref_files = pd.read_excel(ref_files)
-            st.dataframe(ref_files)
             st.session_state["ref_files"] = ref_files
+        if "ref_files" in st.session_state:
+            st.success(f"✅ Archivo cargado")
+            st.dataframe(st.session_state["ref_files"])
+        else:
+            st.warning("⚠️ No se ha cargado archivo")  
 
 # ============================================
 # SECCIÓN 2: CONFIGURACIÓN
