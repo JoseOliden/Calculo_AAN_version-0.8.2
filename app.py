@@ -73,10 +73,10 @@ if page == "📁 Carga de Datos":
             st.session_state["rpt_file"] = rpt_file
 
         if "rpt_file" in st.session_state:
-            st.success(f"📄 Archivo cargado: {st.session_state['rpt_file'].name}")
-            df_resultado = procesar_RPT(rpt_file)
+            st.success(f"📄 Archivo cargado: {st.session_state["rpt_file"].name}")
+            df_resultado = procesar_RPT(st.session_state["rpt_file"])
             st.session_state["df_resultado"] = df_resultado
-            st.dataframe(df_resultado)
+            st.dataframe(st.session_state["df_resultado"])
         else:
             st.warning("⚠️ No se ha cargado archivo RPT ")
         
