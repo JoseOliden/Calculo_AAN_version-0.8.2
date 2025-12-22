@@ -167,7 +167,7 @@ if page == "📁 Carga de Datos":
         else:
             ref_type = st.radio("Seleccionar tipo de nucléidos:", ["Corta (C)", "Media (M)", "Larga (L)"],index = ["Corta (C)", "Media (M)", "Larga (L)"].index(st.session_state["ref_type"]))
             st.session_state["ref_type"] = ref_type
-        ref_files = st.file_uploader(f"Subir archivo RDN_{ref_type[0]}.xlsx", type=['xlsx'], key="reference")
+        ref_files = st.file_uploader(f"Subir archivo RDN_{ref_type}.xlsx", type=['xlsx'], key="reference")
         if ref_files:
             ref_files = pd.read_excel(ref_files)
             st.session_state["ref_files"] = ref_files
