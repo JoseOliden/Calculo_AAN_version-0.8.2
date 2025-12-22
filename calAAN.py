@@ -108,8 +108,8 @@ def conc(df_muestra, w,td_i,ti_i,tv_i,tr_i, df_comp_Au, w_Au,td_c_Au,ti_c_Au,tv_
   lam_c_Au = np.log(2)/df_comp_Au["t(1/2) s"].to_numpy(dtype="float64")[0]
   Er_c_Au = df_comp_Au["EREF"].to_numpy(dtype="float64")[0]
 
-  Aesp_c_Au = Aesp(np.float64(Cn_c_Au[0]), w_c_Au, np.float64(lam_c_Au), tr_c_Au, td_c_Au, ti_c_Au, tv_c_Au, np.float64(e_c_Au[0]))
-  Q0_alfa_c_Au = cal_Q0_alfa_i(Q0_c_Au[0],Er_c_Au[0],alfa)
+  Aesp_c_Au = Aesp(np.float64(Cn_c_Au), w_c_Au, np.float64(lam_c_Au), tr_c_Au, td_c_Au, ti_c_Au, tv_c_Au, np.float64(e_c_Au))
+  Q0_alfa_c_Au = cal_Q0_alfa_i(Q0_c_Au,Er_c_Au,alfa)
   
   # muestra
   #k0_i, e_i, Q0_i, Cn_i, w_i, lamb_i, Er_i, td_i, tr_i, ti_i, tv_i = par_ele
