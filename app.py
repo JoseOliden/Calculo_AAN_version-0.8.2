@@ -162,12 +162,15 @@ if page == "📁 Carga de Datos":
     with col22:
         # Librería de Nucléidos
         st.subheader("📚 Librería de Nucléidos")
-        if "ref_type" not in st.session_state:
-            st.session_state["ref_type"] = "Corta (C)"
-        else:
-            ref_type = st.radio("Seleccionar tipo de nucléidos:", ["Corta (C)", "Media (M)", "Larga (L)"],index = ["Corta (C)", "Media (M)", "Larga (L)"].index(st.session_state["ref_type"]))
-            st.session_state["ref_type"] = ref_type
-        ref_files = st.file_uploader(f"Subir archivo RDN_{ref_type}.xlsx", type=['xlsx'], key="reference")
+        st.write(Corto: RDN_C.xlsx)
+        st.write(Medio: RDN_M.xlsx)
+        st.write(Largo: RDN_L.xlsx)
+        #if "ref_type" not in st.session_state:
+        #    st.session_state["ref_type"] = "Corta (C)"
+        #else:
+        #    ref_type = st.radio("Seleccionar tipo de nucléidos:", ["Corta (C)", "Media (M)", "Larga (L)"],index = ["Corta (C)", "Media (M)", "Larga (L)"].index(st.session_state["ref_type"]))
+        #    st.session_state["ref_type"] = ref_type
+        ref_files = st.file_uploader(f"Subir archivo RDN", type=['xlsx'], key="reference")
         if ref_files:
             ref_files = pd.read_excel(ref_files)
             st.session_state["ref_files"] = ref_files
