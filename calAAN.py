@@ -72,14 +72,14 @@ def cal_alfa(df_comp):
   par = (Aesp_c[0], k0_c[0], e_c[0], Er_c[0], Q0_c[0], Aesp_c[1], k0_c[1], e_c[1], Er_c[1], Q0_c[1], Aesp_c[2], k0_c[2], e_c[2], Er_c[2], Q0_c[2])
   solution = root(equations, initial_guesses, args = par)
   alfa = solution.x
-
+  alfa =np.float(alfa[0])
   # Calcular f
   Q0_alfa_c = np.zeros(len(k0_c))
   for i in range(len(k0_c)):
     Q0_alfa_c[i] = cal_Q0_alfa_i(Q0_c[i],Er_c[i],alfa)
   f = cal_f_alfa(Q0_alfa_c,Aesp_c,e_c,k0_c)
   
-  return np.float64(alfa[0]), f
+  return alfa, f
 # ---------------------------- Calculo de f --------------------------------#
 def cal_f_alfa(Q0_alfa_c,Aesp_c,e_c,k0_c):
   # calcula f
