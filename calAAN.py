@@ -97,16 +97,16 @@ def conc(df_muestra, w,td_i,ti_i,tv_i,tr_i, df_comp_Au, w_Au,td_c_Au,ti_c_Au,tv_
   #f = 34       # Forzar valor de f
   # Comparador Au
   #k0_c_Au, e_c_Au, Q0_c_Au, Cn_c_Au, w_c_Au, lam_c_Au, Er_c_Au, td_c_Au, tr_c_Au, ti_c_Au, tv_c_Au =  par_comp_Au
-  k0_c_Au = df_comp_Au["K0"].to_numpy(dtype="float64")
+  k0_c_Au = df_comp_Au["K0"].to_numpy(dtype="float64")[0]
   if geometria == "50 mm":
-    e_c_Au = df_comp_Au["EFIGAMMA50"].to_numpy(dtype="float64")*df_comp_Au["COI ROSSBACH"].to_numpy(dtype="float64")
+    e_c_Au = df_comp_Au["EFIGAMMA50"].to_numpy(dtype="float64")[0]*df_comp_Au["COI ROSSBACH"].to_numpy(dtype="float64")[0]
   if geometria == "185 mm":
-    e_c_Au = df_comp_Au["EFIGAMMA185"].to_numpy(dtype="float64")*df_comp_Au["COI GAMMA185"].to_numpy(dtype="float64")
-  Q0_c_Au = df_comp_Au["Q0"].to_numpy(dtype="float64")
-  Cn_c_Au = df_comp_Au["Net Peak Area"].to_numpy(dtype="float64")
+    e_c_Au = df_comp_Au["EFIGAMMA185"].to_numpy(dtype="float64")[0]*df_comp_Au["COI GAMMA185"].to_numpy(dtype="float64")[0]
+  Q0_c_Au = df_comp_Au["Q0"].to_numpy(dtype="float64")[0]
+  Cn_c_Au = df_comp_Au["Net Peak Area"].to_numpy(dtype="float64")[0]
   w_c_Au = w_Au
-  lam_c_Au = np.log(2)/df_comp_Au["t(1/2) s"].to_numpy(dtype="float64")
-  Er_c_Au = df_comp_Au["EREF"].to_numpy(dtype="float64")
+  lam_c_Au = np.log(2)/df_comp_Au["t(1/2) s"].to_numpy(dtype="float64")[0]
+  Er_c_Au = df_comp_Au["EREF"].to_numpy(dtype="float64")[0]
 
   Aesp_c_Au = Aesp(np.float64(Cn_c_Au[0]), w_c_Au, np.float64(lam_c_Au), tr_c_Au, td_c_Au, ti_c_Au, tv_c_Au, np.float64(e_c_Au[0]))
   Q0_alfa_c_Au = cal_Q0_alfa_i(Q0_c_Au[0],Er_c_Au[0],alfa)
