@@ -162,9 +162,9 @@ if page == "📁 Carga de Datos":
     with col22:
         # Librería de Nucléidos
         st.subheader("📚 Librería de Nucléidos")
-        st.write(Corto: RDN_C.xlsx)
-        st.write(Medio: RDN_M.xlsx)
-        st.write(Largo: RDN_L.xlsx)
+        st.write("Corto: RDN_C.xlsx")
+        st.write("Medio: RDN_M.xlsx")
+        st.write("Largo: RDN_L.xlsx")
         #if "ref_type" not in st.session_state:
         #    st.session_state["ref_type"] = "Corta (C)"
         #else:
