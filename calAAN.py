@@ -99,7 +99,7 @@ def cal_Q0_alfa_i(Q0,Er,alfa):
   # calcula Q0_alfa del elemento i
   #(Q0-0.429)/(Er**alfa) + 0.429/((2*alfa+1)*0.55**alfa) literatura
   # (Q0-0.429)/(Er**alfa) + 0.429/(2*alfa+0.55**alfa) # MACROS
-  return (Q0-0.429)/(Er**alfa) + 0.429/(2*alfa+0.55**alfa)
+  return (Q0-0.429)/(Er**alfa) + 0.429/((2*alfa+1)*0.55**alfa)
 
 def conc(df_muestra, w,td_i,ti_i,tv_i,tr_i, df_comp_Au, w_Au,td_c_Au,ti_c_Au,tv_c_Au,tr_c_Au, alfa, f, geometria):
   #alfa = 0.226 # Forzar valor de alfa 
