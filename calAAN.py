@@ -83,9 +83,10 @@ def cal_alfa(df_comp):
   alfa =np.float64(alfa[0])
   # Calcular f
   Q0_alfa_c = np.zeros(len(k0_c))
-  for i in range(len(k0_c)):
-    Q0_alfa_c[i] = cal_Q0_alfa_i(Q0_c[i],Er_c[i],alfa)
-    st.write(Q0_alfa_c[i])
+  for j in range(len(k0_c)):
+    Q0_alfa_c[j] = cal_Q0_alfa_i(Q0_c[j],Er_c[i],alfa
+    #
+    st.write(Q0_alfa_c[j])
   f = cal_f_alfa(Q0_alfa_c,Aesp_c,e_c,k0_c)
   
   return alfa, f
