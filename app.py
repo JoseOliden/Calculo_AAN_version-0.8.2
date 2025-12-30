@@ -405,7 +405,8 @@ elif page == "📊 Procesamiento":
                         st.session_state["df_comparadores_alfa_f"] = crear_df_comparadores()
                     else:
                         st.session_state["df_comparadores_alfa_f"]
-            
+                    st.dataframe(st.session_state["df_comparadores_alfa_f"])
+                    ##
                     # Procesa comparador de Au y sus datos
                     
                     df_Au = Selecion_Nucleidos_Au(st.session_state["df_au_resultado"], st.session_state["df_file"],st.session_state["tolerancia"])
